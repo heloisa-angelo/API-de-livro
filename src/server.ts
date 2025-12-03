@@ -1,24 +1,21 @@
 import express from "express"
 import helmet from "helmet"
 import path from  "path"
+import router from "./routes/livro"
 
-//instancia do express
+
 const server = express()
 
 server.use(helmet())
-server.use(express.json())//habilita leitura do json
-server.use(express.urlencoded({extended: true}))//suporte a formulario
-//acesso a arquivos estáticos
+server.use(express.json())
+server.use(express.urlencoded({extended: true}))
 server.use(express.static(path.join(__dirname, "../public")))
+server.use("/livros", router)
 
-//rotas
-server.get("/", (req, res) =>{
-    let nome = "John"
-    let idade = 90
-    res.json({nome, idade})
+server.get("/", (req, res) => {
+    res.json({mensagem: "API de Livros rodando! "})
 })
 
-//iniciar o servidor
 server.listen(3000, () => {
     console.log("Servidpr rodando em http://localhost:3000/")
 })
