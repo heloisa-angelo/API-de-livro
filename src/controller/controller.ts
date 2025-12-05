@@ -11,7 +11,6 @@ export const getLivros = (_req: Request, res: Response) => {
     res.json(listarLivros())
 }
 
-
 export const getLivro = (req: Request, res: Response) => {
     const id = Number(req.params.id)
     const livro = buscarLivro(id)

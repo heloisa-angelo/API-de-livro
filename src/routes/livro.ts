@@ -3,11 +3,17 @@ import { getLivros, getLivro, postLivro, putLivro, deleteLivro } from "../contro
 
 const router = express.Router()
 
-router.get("/", getLivros)           
-router.get("/listar", getLivros)     
-router.get("/buscar", getLivro)      
-router.get("/criar", postLivro)      
-router.get("/atualizar", putLivro)   
+router.get("/", getLivros)    
+
+router.get("/:id", getLivro)
+
+router.get("/buscar", getLivro)   
+
+router.post("/criar", postLivro)  
+
+router.get("/atualizar", putLivro) 
+
 router.get("/remover", deleteLivro)  
+
 
 export default router
